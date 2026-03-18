@@ -1,168 +1,135 @@
-Microplastics Detection System using ESP32 Camera and Machine Learning
+# Smart Portable Sensor for Real-Time Microplastic Detection
 
-Overview
+## Overview
+This project presents a smart portable sensor system for the real-time detection and quantification of microplastics in water. The system combines UV fluorescence, imaging, and AI/ML-based classification to provide a low-cost, battery-powered, and field-deployable alternative to conventional laboratory methods.
 
-Microplastics are extremely small plastic particles that pose serious environmental and health risks. Detecting these particles manually is difficult and time-consuming. This project proposes an **IoT-based microplastics detection system** that uses an **ESP32 camera module and a machine learning model** to automatically detect microplastics in captured images.
+Traditional microplastic detection methods often depend on bulky and expensive instruments such as FTIR and Raman spectroscopy. This project aims to reduce that dependency by offering a portable, efficient, and practical solution for on-site water quality monitoring.
 
-The system captures images using the ESP32 camera, processes them using a Python-based machine learning model, and identifies microplastic particles. The detection results are visualized through annotated images and performance metrics such as confusion matrices.
+## Problem Statement
+Microplastics have become a major environmental concern due to their presence in freshwater, oceans, and even drinking water. Existing detection approaches are often expensive, time-consuming, and restricted to laboratory use.
 
-This solution aims to support **environmental monitoring and research** by providing a low-cost automated microplastics detection system.
----
-Objectives
+This project addresses the need for:
+- Real-time detection of microplastics in water
+- Low-cost and portable monitoring
+- Reduced reliance on advanced laboratory instruments
+- Faster and more accessible field-based analysis
 
-* Detect microplastics automatically using image processing and machine learning.
-* Use an ESP32 camera module for capturing real-time images.
-* Analyze captured images using a trained detection model.
-* Provide detection results and evaluation metrics.
-* Support environmental monitoring and research on microplastic pollution.
----
-System Architecture
+## Proposed Solution
+The proposed solution is a Portable Optical Sensor System designed to integrate UV fluorescence, imaging, and AI/ML for the detection and quantification of microplastics in real time.
 
-The system consists of three main components:
+The system is designed to:
+- Provide real-time microplastic detection in water
+- Reduce dependency on bulky and expensive instruments like FTIR and Raman
+- Enable on-site and rapid monitoring in remote or resource-limited environments
+- Improve detection accuracy using AI/ML classification
+- Support field-friendly and scalable environmental monitoring
 
-1. Image Capture
+## Workflow
+The system follows this process:
 
-   * ESP32 camera captures images from the environment.
-   * Images are transmitted to the processing system.
+Water Sample → Optical Detection → AI/ML Classification → Real-Time Results
 
-2. Image Processing and Detection
+## Key Features
+- Real-time microplastic detection
+- Portable and battery-powered design
+- UV fluorescence-assisted sensing
+- AI/ML-based particle classification
+- Low-cost alternative to laboratory equipment
+- Suitable for field deployment
+- Scalable for cloud or mobile dashboard integration
 
-   * Python scripts process the captured images.
-   * Machine learning algorithms detect microplastic particles.
+## Innovation and Uniqueness
+- **Low-Cost Alternative**  
+  Uses simple optical sensing instead of expensive laboratory instruments.
 
-3. Result Visualization
+- **AI-Powered Detection**  
+  Machine learning helps classify particles by optical signatures in real time.
 
-   * Detection results are displayed using annotated images.
-   * Performance metrics such as confusion matrix are generated.
----
-Technologies Used
+- **Portable and Battery-Based**  
+  Designed for operation without complex lab infrastructure.
 
-Hardware
+- **Fast and On-Site Analysis**  
+  Provides quick results with minimal sample preparation.
 
-* ESP32 Camera Module
-* Microcontroller
+- **Scalable System Design**  
+  Can be extended with IoT, cloud logging, and mobile dashboards.
 
-Software
+## Technologies Used
 
-* Python
-* OpenCV
-* Machine Learning algorithms
-* Arduino IDE
+### Programming Languages
+- C++
+- Python
 
-Tools and Libraries
+### Tools and Frameworks
+- Arduino IDE
+- OpenCV
+- CNN-based classification
+- IoT integration with WiFi logging
+- Cloud / Mobile Dashboard support
 
-* NumPy
-* Pandas
-* Matplotlib
-* Scikit-learn
-* Flask (for web interface if used)
----
-Project Structure
+## Hardware Components
+- ESP32-CAM (OV2640)
+- UV LED with MOSFET
+- Peristaltic Pump with Driver
+- USB Microscope
+- Li-ion Battery
 
-```
-Microplastics-Project
+## Applications
+- Water quality monitoring
+- Freshwater and environmental analysis
+- Microplastic pollution detection
+- Research and academic studies
+- Smart environmental monitoring systems
+- Field-based inspection and testing
+
+## Benefits
+- Portable and practical for field use
+- Lower cost compared to lab-based methods
+- Faster detection and monitoring
+- Supports wider environmental deployment
+- Improves accessibility in remote and resource-limited areas
+
+## Future Scope
+- Improve model accuracy with larger datasets
+- Build a dedicated mobile app
+- Add real-time cloud data storage and analytics
+- Enhance particle characterization
+- Develop a compact commercial prototype
+- Expand monitoring to different water sources and environments
+
+## Folder Structure
+```text
+Microplastic-Detection-Project/
 │
-├── arduino-esp32-master/       # ESP32 camera related libraries
-├── dummy/                      # Testing scripts and confusion matrix results
-│   └── confusion_matrix/
+├── README.md
+├── requirements.txt
+├── src/
+│   ├── main.py
+│   ├── image_processing.py
+│   ├── classification_model.py
+│   ├── sensor_control.py
+│   └── utils.py
 │
-├── esp32_microplastic.ino      # ESP32 camera code
-├── app.py                      # Main Python application
-├── camera_test.py              # Camera testing script
-├── camera_test_code.py         # Image capture testing
-├── detection_results.csv       # Detection output data
-├── latest_capture.jpg          # Captured image
-├── latest_annotated.jpg        # Detection result image
-└── README.md                   # Project documentation
-```
----
-How the System Works
+├── hardware/
+│   ├── esp32_cam_code.ino
+│   ├── circuit_diagram.png
+│   └── component_list.txt
+│
+├── data/
+│   ├── sample_images/
+│   ├── processed_images/
+│   └── dataset_info.txt
+│
+├── models/
+│   └── trained_model.h5
+│
+├── outputs/
+│   ├── logs/
+│   └── results/
+│
+└── docs/
+    ├── presentation.pptx
+    └── research_references.txt
 
-1. The ESP32 camera captures images from the sample environment.
-2. The captured image is transmitted to the processing system.
-3. Python scripts analyze the image using image processing techniques.
-4. The machine learning model detects microplastic particles.
-5. The detected particles are highlighted in the output image.
-6. Results are stored and evaluated using performance metrics.
-
----
-Installation and Setup
-1. Clone the Repository
-
-```
-git clone https://github.com/PavanShankaran-B/Microplastics-Project.git
-cd Microplastics-Project
-```
-2. Install Required Python Libraries
-
-```
-pip install opencv-python
-pip install numpy
-pip install pandas
-pip install matplotlib
-pip install scikit-learn
-```
-3. Upload ESP32 Code
-
-1. Open **Arduino IDE**
-2. Connect the **ESP32 Camera Module**
-3. Upload the file:
-
-```
-esp32_microplastic.ino
-```
-4. Run the Detection Program
-
-```
-python app.py
-```
----
-Output
-
-The system produces:
-
-* Captured images from the ESP32 camera
-* Annotated images showing detected microplastics
-* CSV files containing detection results
-* Confusion matrix for model evaluation
-
-Example outputs include:
-
-* `latest_capture.jpg`
-* `latest_annotated.jpg`
-* `detection_results.csv`
----
-Performance Evaluation
-
-To evaluate the detection model, a **confusion matrix** is generated. This helps analyze:
-
-* True Positives
-* False Positives
-* True Negatives
-* False Negatives
-
-These metrics help measure the accuracy and reliability of the detection model.
----
-Applications
-
-* Environmental monitoring
-* Marine pollution analysis
-* Water quality monitoring
-* Research on plastic pollution
-* Automated laboratory analysis
----
-Future Improvements
-
-* Improve model accuracy using deep learning models such as CNN.
-* Integrate cloud storage for remote monitoring.
-* Develop a real-time dashboard for visualization.
-* Expand dataset for better training.
-* Implement mobile notifications for detection alerts.
----
-Contributors
-
-PavanShankaran-B
----
-License
-
-This project is developed for educational and research purposes.
+## author
+    Mythreyan S
